@@ -4,4 +4,4 @@ Neos:
       resources:
         javascript:
           Shel.Neos:ColorPickerEditor:
-            resource: resource://Shel.Neos/Public/ColorPickerEditor/Plugin.js
+            resource: resource://Shel.Neos.ColorPicker/Public/ColorPickerEditor/Plugin.js
