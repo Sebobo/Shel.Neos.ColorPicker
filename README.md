@@ -9,7 +9,11 @@ This editor is based on the example in https://github.com/neos/neos-ui-extensibi
 has somme modifications in regards to styling, supports the alpha channel and has a reset button to
 unset a value.
 
-## Example
+## Example           
+
+See it in [action](https://vimeo.com/327331115).
+
+![Colorpicker in Neos CMS sidebar](Documentation/ColorPickerExample.jpg)  
 
 ## Installation
 
