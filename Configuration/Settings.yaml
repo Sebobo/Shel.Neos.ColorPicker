@@ -1,0 +1,7 @@
+Neos:
+  Neos:
+    Ui:
+      resources:
+        javascript:
+          Shel.Neos:ColorPickerEditor:
+            resource: resource://Shel.Neos/Public/ColorPickerEditor/Plugin.js

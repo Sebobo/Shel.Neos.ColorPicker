@@ -1,0 +1,20 @@
+{
+  "description": "Shel.Neos.ColorPicker:ColorPickerEditor",
+  "license": "proprietary",
+  "private": true,
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "build": "neos-react-scripts build && uglifyjs --compress --mangle -o ../../../Public/ColorPickerEditor/Plugin.js -- ../../../Public/ColorPickerEditor/Plugin.js",
+    "watch": "neos-react-scripts watch"
+  },
+  "devDependencies": {
+    "@neos-project/react-ui-components": "~3.1.0",
+    "@neos-project/neos-ui-extensibility": "~3.1.0",
+    "react-color": "^2.11.1"
+  },
+  "neos": {
+    "buildTargetDirectory": "../../../Public/ColorPickerEditor"
+  }
+}
