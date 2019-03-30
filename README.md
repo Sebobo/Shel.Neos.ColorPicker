@@ -1,12 +1,12 @@
-# Colorpicker editor for Neos CMS
+# Color Picker Editor for Neos CMS
 
 ## Introduction
 
-This package provides a color picker editor which can be used
-in Neos CMS with the Neos.UI 2+.
+This package provides a Color Picker Editor which can be used
+in Neos CMS with the Neos.Ui 2+.
 
 This editor is based on the example in https://github.com/neos/neos-ui-extensibility-examples but 
-has somme modifications in regards to styling, supports the alpha channel and has a reset button to
+has some modifications in regards to styling, supports the alpha channel and has a reset button to
 unset a value.
 
 ## Example           
@@ -25,7 +25,7 @@ Then run `composer update` in your project directory.
 
 ## How to use
 
-Add a property of type string and set the editor like in this example:
+Add a property of type string and configure the editor as seen in this example:
 
     'My.Site:Content.Text':
       superTypes:
