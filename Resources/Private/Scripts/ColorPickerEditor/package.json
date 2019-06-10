@@ -6,13 +6,14 @@
     "node": ">=8"
   },
   "scripts": {
-    "build": "neos-react-scripts build && uglifyjs --compress --mangle -o ../../../Public/ColorPickerEditor/Plugin.js -- ../../../Public/ColorPickerEditor/Plugin.js",
+    "build": "NODE_ENV=production neos-react-scripts build && terser --compress --mangle -o ../../../Public/ColorPickerEditor/Plugin.js -- ../../../Public/ColorPickerEditor/Plugin.js",
     "watch": "neos-react-scripts watch"
   },
   "devDependencies": {
-    "@neos-project/react-ui-components": "~3.1.0",
-    "@neos-project/neos-ui-extensibility": "~3.1.0",
-    "react-color": "^2.11.1"
+    "@neos-project/neos-ui-extensibility": "^3.5",
+    "@neos-project/react-ui-components": "^3.5",
+    "react-color": "^2.11.1",
+    "terser": "^4.0.0"
   },
   "neos": {
     "buildTargetDirectory": "../../../Public/ColorPickerEditor"
