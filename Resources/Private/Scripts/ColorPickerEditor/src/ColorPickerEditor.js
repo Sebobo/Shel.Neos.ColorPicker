@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import { SketchPicker } from 'react-color';
+import {SketchPicker} from 'react-color';
 import {IconButton} from '@neos-project/react-ui-components';
 
 export default class ColorPickerEditor extends PureComponent {
@@ -29,7 +29,8 @@ export default class ColorPickerEditor extends PureComponent {
 
         return (
             <div>
-                <SketchPicker color={this.props.value} onChange={this.handleChangeColor} styles={customStyles} width="auto"/>
+                <SketchPicker color={this.props.value} onChange={this.handleChangeColor} styles={customStyles}
+                              width="auto"/>
                 <IconButton style="lighter" icon="times" title="Reset" onClick={this.handleResetColorClick}/>
             </div>
         );
