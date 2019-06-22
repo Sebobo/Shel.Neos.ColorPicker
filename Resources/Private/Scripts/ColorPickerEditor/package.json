@@ -10,8 +10,8 @@
     "watch": "neos-react-scripts watch"
   },
   "devDependencies": {
-    "@neos-project/neos-ui-extensibility": "^3.5",
-    "@neos-project/react-ui-components": "^3.5",
+    "@neos-project/neos-ui-extensibility": "^3.6.1",
+    "@neos-project/react-ui-components": "^3.6.1",
     "react-color": "^2.11.1",
     "terser": "^4.0.0"
   },

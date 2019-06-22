@@ -5,3 +5,8 @@ Neos:
         javascript:
           Shel.Neos:ColorPickerEditor:
             resource: resource://Shel.Neos.ColorPicker/Public/ColorPickerEditor/Plugin.js
+
+      frontendConfiguration:
+        'Shel.Neos:ColorPickerEditor':
+          # `mode` can be one of "rgba", "hsla", "hex"
+          mode: 'rgba'

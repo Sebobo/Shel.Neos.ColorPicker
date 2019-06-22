@@ -40,7 +40,23 @@ Add a property of type string and configure the editor as seen in this example:
             reloadIfChanged: true
             inspector:
               group: 'text'
-              editor: 'Shel.Neos.ColorPicker/ColorPickerEditor'     
+              editor: 'Shel.Neos.ColorPicker/ColorPickerEditor'   
+              
+## Customization
+
+The editor allows some customization options via your `Settings.yaml` file:
+
+    Neos:
+      Neos:
+        Ui:
+          frontendConfiguration:
+            'Shel.Neos:ColorPickerEditor':
+              # `mode` can be one of "rgba", "hsla", "hex"
+              mode: 'rgba'
+              
+`mode` allows you to store the selected color values in a different format if needed. 
+This can be helpful, when the hsl format is needed to get the individual components.
+
 
 ## Contributions
 
