@@ -46,11 +46,12 @@ export default class ColorPickerEditor extends PureComponent {
                 }
             }
         };
+        const {presetColors} = this.getConfig();
 
         return (
             <div>
                 <SketchPicker color={this.props.value} onChange={this.handleChangeColor} styles={customStyles}
-                              width="auto"/>
+                              width="auto" presetColors={presetColors}/>
                 <IconButton style="lighter" icon="times" title="Reset" onClick={this.handleResetColorClick}/>
             </div>
         );

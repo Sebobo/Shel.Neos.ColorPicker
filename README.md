@@ -53,10 +53,14 @@ The editor allows some customization options via your `Settings.yaml` file:
             'Shel.Neos:ColorPickerEditor':
               # `mode` can be one of "rgba", "hsla", "hex"
               mode: 'rgba'
+              # Colors which are available for quick selection
+              presetColors: ['#D0021B', '#F5A623', ...]
               
 `mode` allows you to store the selected color values in a different format if needed. 
 This can be helpful, when the hsl format is needed to get the individual components.
 
+`presetColors` lets you customize the list of color squares that are available for quick selection.
+  
 
 ## Contributions
 
