@@ -1,15 +1,15 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {SketchPicker} from 'react-color';
+import NeosColorPicker from './NeosColorPicker/ColorPicker';
 import {IconButton} from '@neos-project/react-ui-components';
 
 export default class ColorPickerEditor extends PureComponent {
-
+    
     static propTypes = {
         value: PropTypes.string,
         commit: PropTypes.func.isRequired,
     };
-
+    
     handleChangeColor = newColor => {
         const {mode} = this.getConfig();
         switch (mode) {
@@ -27,33 +27,24 @@ export default class ColorPickerEditor extends PureComponent {
                 this.props.commit('rgba(' + newColor.rgb.r + ',' + newColor.rgb.g + ',' + newColor.rgb.b + ',' + newColor.rgb.a + ')');
         }
     };
-
+    
     handleResetColorClick = () => {
         this.props.commit('');
     };
-
+    
     getConfig() {
         return {
             mode: 'rgba'
         };
     }
-
+    
     render() {
-        const customStyles = {
-            'default': {
-                picker: {
-                    background: '#5a5a5a'
-                }
-            }
-        };
         const {presetColors} = this.getConfig();
-
+        
         return (
             <div>
-                <SketchPicker color={this.props.value} onChange={this.handleChangeColor} styles={customStyles}
-                              width="auto" presetColors={presetColors}/>
-                <IconButton style="lighter" icon="times" title="Reset" onClick={this.handleResetColorClick}/>
-            </div>
-        );
+            <NeosColorPicker color={this.props.value} onChange={this.handleChangeColor} onReset={this.handleResetColorClick} width="auto" presetColors={presetColors}/>
+        </div>
+    );
     }
 }
