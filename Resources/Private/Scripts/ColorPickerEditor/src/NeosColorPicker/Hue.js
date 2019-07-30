@@ -1,6 +1,6 @@
 import React, {Component, PureComponent} from 'react';
 import reactCSS from 'reactcss';
-import * as hue from 'react-color/lib/helpers/hue';
+import {calculateChange} from 'react-color/lib/helpers/hue';
 
 export class Hue extends (PureComponent || Component) {
     componentWillUnmount() {
@@ -8,21 +8,21 @@ export class Hue extends (PureComponent || Component) {
     }
 
     handleChange = e => {
-        const change = hue.calculateChange(e, 'horizontal', this.props, this.container);
+        const change = calculateChange(e, 'horizontal', this.props, this.container);
         if (change && typeof this.props.onChange === 'function') {
             this.props.onChange(change, e);
         }
-    }
+    };
 
     handleMouseDown = e => {
         this.handleChange(e);
         window.addEventListener('mousemove', this.handleChange);
         window.addEventListener('mouseup', this.handleMouseUp);
-    }
+    };
 
     handleMouseUp = () => {
         this.unbindEventListeners();
-    }
+    };
 
     unbindEventListeners() {
         window.removeEventListener('mousemove', this.handleChange);

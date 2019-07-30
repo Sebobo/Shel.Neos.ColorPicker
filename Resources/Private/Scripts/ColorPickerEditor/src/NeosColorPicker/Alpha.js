@@ -1,6 +1,6 @@
 import React, {Component, PureComponent} from 'react';
 import reactCSS from 'reactcss';
-import * as alpha from 'react-color/lib/helpers/alpha';
+import {calculateChange} from 'react-color/lib/helpers/alpha';
 import Checkboard from 'react-color/lib/components/common/Checkboard';
 
 export class Alpha extends (PureComponent || Component) {
@@ -9,26 +9,26 @@ export class Alpha extends (PureComponent || Component) {
     }
 
     handleChange = e => {
-        const change = alpha.calculateChange(e, '', this.props, this.container);
+        const change = calculateChange(e, '', this.props, this.container);
         if (change && typeof this.props.onChange === 'function') {
             this.props.onChange(change, e);
         }
-    }
+    };
 
     handleMouseDown = e => {
         this.handleChange(e);
         window.addEventListener('mousemove', this.handleChange);
         window.addEventListener('mouseup', this.handleMouseUp);
-    }
+    };
 
     handleMouseUp = () => {
         this.unbindEventListeners();
-    }
+    };
 
     unbindEventListeners = () => {
         window.removeEventListener('mousemove', this.handleChange);
         window.removeEventListener('mouseup', this.handleMouseUp);
-    }
+    };
 
     render() {
         const {rgb} = this.props;
