@@ -9,7 +9,7 @@ import Fields from './Fields';
 import PresetColors from './PresetColors';
 import {IconButton} from '@neos-project/react-ui-components';
 
-export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwatchHover, presetColors, renderers, styles: passedStyles = {}, className = ''}) => {
+export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwatchHover, disablePicker, disableFields, disablePresetColors, presetColors, renderers, styles: passedStyles = {}, className = ''}) => {
     const styles = reactCSS(merge({
         'default': {
             picker: {
@@ -32,7 +32,7 @@ export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwa
             },
             controls: {
                 display: 'flex',
-                marginBottom: '10px'
+                paddingBottom: '10px'
             },
             sliders: {
                 display: 'flex',
@@ -43,9 +43,17 @@ export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwa
             },
             color: {
                 position: 'relative',
-                marginLeft: '10px',
                 overflow: 'hidden',
                 width: '41px',
+                height: '41px',
+                background: '#fff',
+                border: '1px solid #323232',
+                borderRadius: '2px'
+            },
+            colorWide: {
+                position: 'relative',
+                overflow: 'hidden',
+                width: '100%',
                 height: '41px',
                 background: '#fff',
                 border: '1px solid #323232',
@@ -58,6 +66,7 @@ export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwa
             },
             hue: {
                 position: 'relative',
+                marginRight: '10px',
                 height: '15px',
                 borderRadius: '2px'
             },
@@ -75,6 +84,7 @@ export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwa
 
             alpha: {
                 position: 'relative',
+                marginRight: '10px',
                 height: '15px',
                 overflow: 'visible',
                 borderRadius: '2px',
@@ -99,63 +109,103 @@ export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwa
         }
     }, passedStyles));
 
-    return (
-        <div style={ styles.picker } className={ `neos-color-picker ${className}` }>
-            <div style={ styles.saturation }>
-                <Saturation
-                    style={ styles.Saturation }
-                    hsl={ hsl }
-                    hsv={ hsv }
-                    onChange={ onChange }
-                />
-            </div>
-            <div style={ styles.controls } className="flexbox-fix">
-                <div style={ styles.sliders }>
-                    <div style={ styles.hue }>
-                        <Hue
-                            style={ styles.Hue }
+    function renderPicker() {
+        if (!disablePicker) {
+            return (
+                <div>
+                    <div style={ styles.saturation }>
+                        <Saturation
+                            style={ styles.Saturation }
                             hsl={ hsl }
+                            hsv={ hsv }
                             onChange={ onChange }
                         />
                     </div>
-                    <div style={ styles.alpha }>
-                        <Alpha
-                            style={ styles.Alpha }
-                            rgb={ rgb }
-                            hsl={ hsl }
-                            renderers={ renderers }
-                            onChange={ onChange }
-                        />
+                    <div style={ styles.controls } className="flexbox-fix">
+                        <div style={ styles.sliders }>
+                            <div style={ styles.hue }>
+                                <Hue
+                                    style={ styles.Hue }
+                                    hsl={ hsl }
+                                    onChange={ onChange }
+                                />
+                            </div>
+                            <div style={ styles.alpha }>
+                                <Alpha
+                                    style={ styles.Alpha }
+                                    rgb={ rgb }
+                                    hsl={ hsl }
+                                    renderers={ renderers }
+                                    onChange={ onChange }
+                                />
+                            </div>
+                        </div>
+                        <div style={ styles.color }>
+                            <Checkboard />
+                            <div style={ styles.activeColor } />
+                        </div>
+                        <div style={ styles.reset }>
+                            <IconButton style="lighter" icon="times" title="Reset" onClick={ onReset }/>
+                        </div>
                     </div>
                 </div>
-                <div style={ styles.color }>
+            );
+        }
+
+        return (
+            <div style={ styles.controls } className="flexbox-fix">
+                <div style={ styles.colorWide }>
                     <Checkboard />
                     <div style={ styles.activeColor } />
                 </div>
-
                 <div style={ styles.reset }>
                     <IconButton style="lighter" icon="times" title="Reset" onClick={ onReset }/>
                 </div>
             </div>
+        );
+    }
 
-            <Fields
-                rgb={ rgb }
-                hsl={ hsl }
-                hex={ hex }
-                onChange={ onChange }
-            />
-            <PresetColors
-                colors={ presetColors }
-                onClick={ onChange }
-                onSwatchHover={ onSwatchHover }
-            />
+    function renderFields() {
+        if (!disableFields) {
+            return (
+                <Fields
+                    rgb={ rgb }
+                    hsl={ hsl }
+                    hex={ hex }
+                    onChange={ onChange }
+                />
+            );
+        }
+    }
+
+    function renderPresetColor() {
+        if (!disablePresetColors) {
+            return (
+                <PresetColors
+                    colors={ presetColors }
+                    onClick={ onChange }
+                    onSwatchHover={ onSwatchHover }
+                />
+            );
+        }
+    }
+
+    return (
+        <div style={ styles.picker } className={ `neos-color-picker ${className}` }>
+            {renderPicker()}
+            {renderFields()}
+            {renderPresetColor()}
         </div>
     );
 };
 
 ColorPicker.propTypes = {
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    styles: PropTypes.object
+    styles: PropTypes.object,
+    disablePicker: PropTypes.bool,
+    disableFields: PropTypes.bool,
+    disablePresetColors: PropTypes.bool,
+    presetColors: PropTypes.array
 };
 
 ColorPicker.defaultProps = {

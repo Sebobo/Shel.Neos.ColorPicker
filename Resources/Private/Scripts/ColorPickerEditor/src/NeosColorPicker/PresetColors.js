@@ -11,7 +11,7 @@ export const PresetColors = ({colors, onClick = () => {}, onSwatchHover}) => {
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(18px, 1fr))',
                 gridGap: '10px',
-                marginTop: '5px',
+                marginTop: '10px',
                 paddingTop: '15px',
                 borderTop: '1px solid #3f3f3f'
             },

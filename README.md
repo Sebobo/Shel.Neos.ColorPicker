@@ -40,12 +40,16 @@ Add a property of type string and configure the editor as seen in this example:
             reloadIfChanged: true
             inspector:
               group: 'text'
-              editor: 'Shel.Neos.ColorPicker/ColorPickerEditor'   
+              editor: 'Shel.Neos.ColorPicker/ColorPickerEditor'
+              editorOptions:
+                disablePicker: false        # optional
+                disableFields: false        # optional
+                disablePresetColors: false  # optional
               
 ## Customization
 
 The editor allows some customization options via your `Settings.yaml` file:
-
+es
     Neos:
       Neos:
         Ui:

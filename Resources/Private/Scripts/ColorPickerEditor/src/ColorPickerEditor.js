@@ -5,7 +5,16 @@ import NeosColorPicker from './NeosColorPicker/ColorPicker';
 export default class ColorPickerEditor extends PureComponent {
     static propTypes = {
         value: PropTypes.string,
-        commit: PropTypes.func.isRequired
+        commit: PropTypes.func.isRequired,
+        options: PropTypes.objectOf(PropTypes.bool)
+    };
+
+    static defaultProps = {
+        options: {
+            disablePicker: false,
+            disableFields: false,
+            disablePresetColors: false
+        }
     };
 
     handleChangeColor = newColor => {
@@ -44,7 +53,15 @@ export default class ColorPickerEditor extends PureComponent {
 
         return (
             <div>
-                <NeosColorPicker color={this.props.value} onChange={this.handleChangeColor} onReset={this.handleResetColorClick} width="auto" presetColors={presetColors}/>
+                <NeosColorPicker
+                    color={this.props.value}
+                    onChange={this.handleChangeColor}
+                    onReset={this.handleResetColorClick}
+                    width="auto"
+                    disablePicker={this.props.options.disablePicker}
+                    disableFields={this.props.options.disableFields}
+                    disablePresetColors={this.props.options.disablePresetColors}
+                    presetColors={presetColors} />
             </div>
         );
     }
