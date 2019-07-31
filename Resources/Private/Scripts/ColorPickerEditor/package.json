@@ -10,10 +10,13 @@
     "watch": "neos-react-scripts watch"
   },
   "devDependencies": {
+    "@neos-project/eslint-config-neos": "^2.2.0",
     "@neos-project/neos-ui-extensibility": "^3.6.1",
-    "@neos-project/react-ui-components": "^3.6.1",
+    "@neos-project/react-ui-components": "^3.8.0",
+    "eslint": "^6.1.0",
     "react-color": "^2.11.1",
-    "terser": "^4.0.0"
+    "terser": "^4.0.0",
+    "webpack": "^4.38.0"
   },
   "neos": {
     "buildTargetDirectory": "../../../Public/ColorPickerEditor"

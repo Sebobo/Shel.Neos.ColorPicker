@@ -13,7 +13,7 @@ unset a value.
 
 See it in [action](https://vimeo.com/327331115).
 
-![Colorpicker in Neos CMS sidebar](Documentation/ColorPickerExample.jpg)  
+![Colorpicker in Neos CMS sidebar](Documentation/ColorPickerExample.png)  
 
 ## Installation
 
