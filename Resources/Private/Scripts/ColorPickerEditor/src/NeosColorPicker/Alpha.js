@@ -101,8 +101,7 @@ export class Alpha extends (PureComponent || Component) {
                     onMouseDown={ this.handleMouseDown }
                     onTouchMove={ this.handleChange }
                     onTouchStart={ this.handleChange }
-                    role="slider"
-				>
+                    role="slider">
                     <div style={ styles.pointer }>
                         { this.props.pointer ? (<this.props.pointer { ...this.props } />) : (<div style={ styles.slider } />) }
                     </div>

@@ -56,7 +56,7 @@ export const PresetColors = ({colors, onClick = () => {}, onSwatchHover}) => {
                             focusStyle={{
                                 boxShadow: `inset 0 0 0 1px rgba(0,0,0,.15), 0 0 4px ${c.color}`
                             }}
-						/>
+                        />
                     </div>
                 );
             }) }
@@ -71,8 +71,7 @@ PresetColors.propTypes = {
             color: PropTypes.string,
             title: PropTypes.string
         })
-    ],
-	)).isRequired
+    ])).isRequired
 };
 
 export default PresetColors;
