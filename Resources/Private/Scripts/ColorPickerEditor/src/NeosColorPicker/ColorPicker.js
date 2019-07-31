@@ -6,7 +6,7 @@ import {ColorWrap, Saturation, Checkboard} from 'react-color/lib/components/comm
 import Alpha from './Alpha';
 import Hue from './Hue';
 import Fields from './Fields';
-import PresetColors from './PresentColors';
+import PresetColors from './PresetColors';
 import {IconButton} from '@neos-project/react-ui-components';
 
 export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwatchHover, presetColors, renderers, styles: passedStyles = {}, className = ''}) => {
