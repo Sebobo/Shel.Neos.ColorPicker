@@ -1,14 +1,20 @@
 import React, {Component, PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import reactCSS from 'reactcss';
 import {calculateChange} from 'react-color/lib/helpers/hue';
 
 export class Hue extends (PureComponent || Component) {
+    static propTypes = {
+        hsl: PropTypes.objectOf(PropTypes.number),
+        styles: PropTypes.object
+    };
+
     componentWillUnmount() {
         this.unbindEventListeners();
     }
 
     handleChange = e => {
-        const change = calculateChange(e, 'horizontal', this.props, this.container);
+        const change = calculateChange(e, null, this.props, this.container);
         if (change && typeof this.props.onChange === 'function') {
             this.props.onChange(change, e);
         }

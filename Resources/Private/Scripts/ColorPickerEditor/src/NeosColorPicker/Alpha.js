@@ -1,15 +1,22 @@
 import React, {Component, PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import reactCSS from 'reactcss';
 import {calculateChange} from 'react-color/lib/helpers/alpha';
 import Checkboard from 'react-color/lib/components/common/Checkboard';
 
 export class Alpha extends (PureComponent || Component) {
+    static propTypes = {
+        hsl: PropTypes.objectOf(PropTypes.number),
+        rgb: PropTypes.objectOf(PropTypes.number),
+        styles: PropTypes.object
+    };
+
     componentWillUnmount() {
         this.unbindEventListeners();
     }
 
     handleChange = e => {
-        const change = calculateChange(e, '', this.props, this.container);
+        const change = calculateChange(e, null, this.props, this.container);
         if (change && typeof this.props.onChange === 'function') {
             this.props.onChange(change, e);
         }
@@ -68,20 +75,10 @@ export class Alpha extends (PureComponent || Component) {
                     transform: 'translateX(-2px)'
                 }
             },
-            'vertical': {
-                gradient: {
-                    background: `linear-gradient(to bottom, rgba(${rgb.r},${rgb.g},${rgb.b}, 0) 0%, rgba(${rgb.r},${rgb.g},${rgb.b}, 1) 100%)`
-                },
-                pointer: {
-                    left: 0,
-                    top: `${rgb.a * 100}%`
-                }
-            },
             'overwrite': {
                 ...this.props.style
             }
         }, {
-            vertical: this.props.direction === 'vertical',
             overwrite: true
         });
 
