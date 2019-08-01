@@ -6,14 +6,20 @@ export default class ColorPickerEditor extends PureComponent {
     static propTypes = {
         value: PropTypes.string,
         commit: PropTypes.func.isRequired,
-        options: PropTypes.objectOf(PropTypes.bool)
+        options: PropTypes.shape({
+            picker: PropTypes.bool,
+            fields: PropTypes.bool,
+            presetColors: PropTypes.oneOfType([
+                PropTypes.array,
+                PropTypes.bool
+            ])
+        })
     };
 
     static defaultProps = {
         options: {
-            disablePicker: false,
-            disableFields: false,
-            disablePresetColors: false
+            picker: true,
+            fields: true
         }
     };
 
@@ -49,7 +55,11 @@ export default class ColorPickerEditor extends PureComponent {
     }
 
     render() {
-        const {presetColors} = this.getConfig();
+        let {presetColors} = this.getConfig();
+
+        if (Array.isArray(this.props.options.presetColors) || this.props.options.presetColors === false) {
+            presetColors = this.props.options.presetColors;
+        }
 
         return (
             <div>
@@ -58,9 +68,8 @@ export default class ColorPickerEditor extends PureComponent {
                     onChange={this.handleChangeColor}
                     onReset={this.handleResetColorClick}
                     width="auto"
-                    disablePicker={this.props.options.disablePicker}
-                    disableFields={this.props.options.disableFields}
-                    disablePresetColors={this.props.options.disablePresetColors}
+                    picker={this.props.options.picker}
+                    fields={this.props.options.fields}
                     presetColors={presetColors} />
             </div>
         );

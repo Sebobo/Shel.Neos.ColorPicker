@@ -42,14 +42,17 @@ Add a property of type string and configure the editor as seen in this example:
               group: 'text'
               editor: 'Shel.Neos.ColorPicker/ColorPickerEditor'
               editorOptions:
-                disablePicker: false        # optional
-                disableFields: false        # optional
-                disablePresetColors: false  # optional
+                # Show saturation/hue/alpha (optional), boolean, default: true
+                picker: true
+                # Show hex/rgba fields (optional), boolean, default: true
+                fields: true
+                # Show preset colors (optional), array of colors or boolean (to disable)
+                presetColors: ['#ff0000', '#0000ff', '#ffff00', ...]
               
 ## Customization
 
 The editor allows some customization options via your `Settings.yaml` file:
-es
+
     Neos:
       Neos:
         Ui:

@@ -9,7 +9,7 @@ import Fields from './Fields';
 import PresetColors from './PresetColors';
 import {IconButton} from '@neos-project/react-ui-components';
 
-export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwatchHover, disablePicker, disableFields, disablePresetColors, presetColors, renderers, styles: passedStyles = {}, className = ''}) => {
+export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwatchHover, picker, fields, presetColors, renderers, styles: passedStyles = {}, className = ''}) => {
     const styles = reactCSS(merge({
         'default': {
             picker: {
@@ -110,7 +110,7 @@ export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwa
     }, passedStyles));
 
     function renderPicker() {
-        if (!disablePicker) {
+        if (picker) {
             return (
                 <div>
                     <div style={ styles.saturation }>
@@ -166,7 +166,7 @@ export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwa
     }
 
     function renderFields() {
-        if (!disableFields) {
+        if (fields) {
             return (
                 <Fields
                     rgb={ rgb }
@@ -179,7 +179,7 @@ export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwa
     }
 
     function renderPresetColor() {
-        if (!disablePresetColors) {
+        if (Array.isArray(presetColors)) {
             return (
                 <PresetColors
                     colors={ presetColors }
@@ -202,10 +202,12 @@ export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwa
 ColorPicker.propTypes = {
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     styles: PropTypes.object,
-    disablePicker: PropTypes.bool,
-    disableFields: PropTypes.bool,
-    disablePresetColors: PropTypes.bool,
-    presetColors: PropTypes.array
+    picker: PropTypes.bool,
+    fields: PropTypes.bool,
+    presetColors: PropTypes.oneOfType([
+        PropTypes.array,
+        PropTypes.bool
+    ])
 };
 
 ColorPicker.defaultProps = {
