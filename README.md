@@ -1,4 +1,8 @@
-# Color Picker Editor for Neos CMS
+# Color Picker Editor for Neos CMS    
+
+[![Latest Stable Version](https://poser.pugx.org/shel/neos-colorpicker/v/stable)](https://packagist.org/packages/shel/neos-colorpicker)
+[![Total Downloads](https://poser.pugx.org/shel/neos-colorpicker/downloads)](https://packagist.org/packages/shel/neos-colorpicker)
+[![License](https://poser.pugx.org/shel/neos-colorpicker/license)](https://packagist.org/packages/shel/neos-colorpicker)
 
 ## Introduction
 
