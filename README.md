@@ -42,6 +42,8 @@ Add a property of type string and configure the editor as seen in this example:
               group: 'text'
               editor: 'Shel.Neos.ColorPicker/ColorPickerEditor'
               editorOptions:
+                # `mode` can be one of "rgba", "hsla", "hex"
+                mode: 'rgba'
                 # Show saturation/hue/alpha (optional), boolean, default: true
                 picker: true
                 # Show hex/rgba fields (optional), boolean, default: true
