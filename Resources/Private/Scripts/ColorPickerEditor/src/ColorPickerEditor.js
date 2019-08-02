@@ -7,6 +7,7 @@ export default class ColorPickerEditor extends PureComponent {
         value: PropTypes.string,
         commit: PropTypes.func.isRequired,
         options: PropTypes.shape({
+            mode: PropTypes.string,
             picker: PropTypes.bool,
             fields: PropTypes.bool,
             presetColors: PropTypes.oneOfType([
@@ -24,7 +25,9 @@ export default class ColorPickerEditor extends PureComponent {
     };
 
     handleChangeColor = newColor => {
-        const {mode} = this.getConfig();
+        let {mode} = this.getConfig();
+        mode = (this.props.options.mode) ? this.props.options.mode : mode;
+
         switch (mode) {
             case 'hsla': {
                 const h = Number(newColor.hsl.h.toFixed(3));
