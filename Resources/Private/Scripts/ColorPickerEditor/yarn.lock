@@ -159,10 +159,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@neos-project/build-essentials@3.6.1":
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/@neos-project/build-essentials/-/build-essentials-3.6.1.tgz#df3506ded1924f5c2cae46a4a67d86ab632ffdf7"
-  integrity sha512-vacWWxU0EDqZq9RycM4XlISnn9LZruiEBfX46PjuCIkNYVk6Mqty0UKgCeUsmFPYwbJ5LzWSpZcvpdId0T6Ouw==
+"@neos-project/build-essentials@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@neos-project/build-essentials/-/build-essentials-5.0.0.tgz#d7b08d3abf3a59ddc9aec5511e6cde084f725c29"
+  integrity sha512-jaYwlFKxifxgvmh+quN1/P8jsyL05SxIY6FWJEoMycZER4yymCxsLgxRCzk+1Ld1VtKWRRTvdBdQsmOm8O+Niw==
   dependencies:
     "@ckeditor/ckeditor5-dev-utils" "^12.0.1"
     babel-core "^6.13.2"
@@ -206,13 +206,13 @@
     eslint-plugin-jsx-a11y "^6.1.1"
     eslint-plugin-react "^7.10.0"
 
-"@neos-project/neos-ui-extensibility@^3.6.1":
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/@neos-project/neos-ui-extensibility/-/neos-ui-extensibility-3.6.1.tgz#9538e2130a6338127525e380f083c91418132104"
-  integrity sha512-v7oUoB7RMKoaukjY1kG9+BymMKfTQaEwoR13I3joockY9sWBSVfIDwkXVICiP1bhI+IUKpCM2bD6UfqpoZ7h+Q==
+"@neos-project/neos-ui-extensibility@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@neos-project/neos-ui-extensibility/-/neos-ui-extensibility-5.0.0.tgz#72f884a5b838f878ffd8ff0a6da93a5df5d68fb3"
+  integrity sha512-iYtKo/mbN7dD8iwKLThW/C6VHfQsbFsjDnC4JzTGO1Ss4l4k7b+X+ZabJbxAX1Rd0CH6Fg33nJIneaYaYcpu+Q==
   dependencies:
-    "@neos-project/build-essentials" "3.6.1"
-    "@neos-project/positional-array-sorter" "3.6.1"
+    "@neos-project/build-essentials" "5.0.0"
+    "@neos-project/positional-array-sorter" "5.0.0"
     babel-core "^6.13.2"
     babel-eslint "^7.1.1"
     babel-loader "^7.1.2"
@@ -231,10 +231,10 @@
     react-dev-utils "^0.5.0"
     style-loader "^0.23.1"
 
-"@neos-project/positional-array-sorter@3.6.1":
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/@neos-project/positional-array-sorter/-/positional-array-sorter-3.6.1.tgz#7639baa91e8e0a16650ccb7d188497624808172e"
-  integrity sha512-aslvddq3QgaZbhz7P070Y66VBc6GO0ulUZA+KDol4OtoCnEJh7RkiwT5Lad0MdBUw8oWjM7R/cny7BYGGuOHBQ==
+"@neos-project/positional-array-sorter@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@neos-project/positional-array-sorter/-/positional-array-sorter-5.0.0.tgz#3419353c31cea8fd56726b0810ba969da951f06e"
+  integrity sha512-DF1k36+PXzHOxxvInw3yaEFwoKfzMia3/aawVJzmS/EtvumNz8owZz/2XnoVjBrqfdcPVTOjsFVVXU1Ed6cQew==
 
 "@neos-project/react-ui-components@^3.8.0":
   version "3.8.0"
