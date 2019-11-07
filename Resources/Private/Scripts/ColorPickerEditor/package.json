@@ -15,7 +15,7 @@
     "@neos-project/react-ui-components": "^3.8.0",
     "eslint": "^6.1.0",
     "react-color": "^2.17.3",
-    "terser": "^4.0.0",
+    "terser": "^4.3.9",
     "webpack": "^4.41.2"
   },
   "neos": {
