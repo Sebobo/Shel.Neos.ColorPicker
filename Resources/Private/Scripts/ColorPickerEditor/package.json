@@ -16,7 +16,7 @@
     "eslint": "^6.1.0",
     "react-color": "^2.11.1",
     "terser": "^4.0.0",
-    "webpack": "^4.38.0"
+    "webpack": "^4.41.2"
   },
   "neos": {
     "buildTargetDirectory": "../../../Public/ColorPickerEditor"
