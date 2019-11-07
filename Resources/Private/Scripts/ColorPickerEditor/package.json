@@ -13,7 +13,7 @@
     "@neos-project/eslint-config-neos": "^2.2.0",
     "@neos-project/neos-ui-extensibility": "^3.6.1",
     "@neos-project/react-ui-components": "^3.8.0",
-    "eslint": "^6.1.0",
+    "eslint": "^6.6.0",
     "react-color": "^2.17.3",
     "terser": "^4.0.0",
     "webpack": "^4.41.2"
