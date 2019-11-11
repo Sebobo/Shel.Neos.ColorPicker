@@ -236,10 +236,10 @@
   resolved "https://registry.yarnpkg.com/@neos-project/positional-array-sorter/-/positional-array-sorter-3.6.1.tgz#7639baa91e8e0a16650ccb7d188497624808172e"
   integrity sha512-aslvddq3QgaZbhz7P070Y66VBc6GO0ulUZA+KDol4OtoCnEJh7RkiwT5Lad0MdBUw8oWjM7R/cny7BYGGuOHBQ==
 
-"@neos-project/react-ui-components@^3.8.0":
-  version "3.8.0"
-  resolved "https://registry.yarnpkg.com/@neos-project/react-ui-components/-/react-ui-components-3.8.0.tgz#711d428239a41da200482f1cdab5c7329aab4bb5"
-  integrity sha512-ESqraClN7TY+x0IXerRvC5Vr2z2WhT/XRx3qqs9bjhgJlMCUCezn6iseF7dKpQSzpznYg/qkn69OfqwgM6Ib2A==
+"@neos-project/react-ui-components@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@neos-project/react-ui-components/-/react-ui-components-5.0.0.tgz#ef5ff1324b40595e5441b069ffdac6700b6b25d9"
+  integrity sha512-hf+/f05pVbeLgcBkQ0zciJl7OW3xEOYhBjbxIqLGzdPniRI4jkRdtrpcMz8+ZXFZls6e35LfXyC/FKUKsq9Pog==
 
 "@nodelib/fs.stat@^1.1.2":
   version "1.1.3"
