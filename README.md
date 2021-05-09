@@ -35,28 +35,28 @@ Add a property of type string and configure the editor as seen in this example:
 
 ```yaml
 "My.Site:Content.Text":
- superTypes:
-  "Neos.Neos:Content": true
- ui:
-  label: "My text content"
- properties:
-  textColor:
-   type: string
-   ui:
-    label: "Text color"
-    reloadIfChanged: true
-    inspector:
-     group: "text"
-     editor: "Shel.Neos.ColorPicker/ColorPickerEditor"
-     editorOptions:
-      # `mode` can be one of "rgba", "hsla", "hex"
-      mode: "rgba"
-      # Show saturation/hue/alpha (optional), boolean, default: true
-      picker: true
-      # Show hex/rgba fields (optional), boolean, default: true
-      fields: true
-      # Show preset colors (optional), array of colors or boolean (to disable)
-      presetColors: ["#ff0000", "#0000ff", "#ffff00", ...]
+  superTypes:
+    "Neos.Neos:Content": true
+  ui:
+    label: 'My text content'
+  properties:
+    textColor:
+      type: string
+      ui:
+        label: 'Text color'
+        reloadIfChanged: true
+        inspector:
+          group: 'text'
+          editor: 'Shel.Neos.ColorPicker/ColorPickerEditor'
+          editorOptions:
+            # `mode` can be one of "rgba", "hsla", "hex"
+            mode: 'rgba'
+            # Show saturation/hue/alpha (optional), boolean, default: true
+            picker: true
+            # Show hex/rgba fields (optional), boolean, default: true
+            fields: true
+            # Show preset colors (optional), array of colors or boolean (to disable)
+            presetColors: ['#ff0000', '#0000ff', '#ffff00', ...]
 ```              
 ## Customization
 
