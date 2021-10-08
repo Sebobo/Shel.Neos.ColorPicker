@@ -57,6 +57,8 @@ Add a property of type string and configure the editor as seen in this example:
             fields: true
             # Show preset colors (optional), array of colors or boolean (to disable)
             presetColors: ['#ff0000', '#0000ff', '#ffff00', ...]
+            # Hides the reset button if set to false
+            allowEmpty: true
 ```              
 ## Customization
 

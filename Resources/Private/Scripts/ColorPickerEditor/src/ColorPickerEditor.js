@@ -10,6 +10,7 @@ export default class ColorPickerEditor extends PureComponent {
             mode: PropTypes.string,
             picker: PropTypes.bool,
             fields: PropTypes.bool,
+            allowEmpty: PropTypes.bool,
             presetColors: PropTypes.oneOfType([
                 PropTypes.array,
                 PropTypes.bool
@@ -20,7 +21,8 @@ export default class ColorPickerEditor extends PureComponent {
     static defaultProps = {
         options: {
             picker: true,
-            fields: true
+            fields: true,
+            allowEmpty: true
         }
     };
 
@@ -59,21 +61,26 @@ export default class ColorPickerEditor extends PureComponent {
 
     render() {
         let {presetColors} = this.getConfig();
+        const {value, options} = this.props;
 
-        if (Array.isArray(this.props.options.presetColors) || this.props.options.presetColors === false) {
-            presetColors = this.props.options.presetColors;
+        if (Array.isArray(options.presetColors) || options.presetColors === false) {
+            presetColors = options.presetColors;
         }
+
+        console.log(this.props, 'colorpicker props');
 
         return (
             <div>
                 <NeosColorPicker
-                    color={this.props.value}
+                    color={value}
                     onChange={this.handleChangeColor}
                     onReset={this.handleResetColorClick}
                     width="auto"
-                    picker={this.props.options.picker}
-                    fields={this.props.options.fields}
-                    presetColors={presetColors} />
+                    picker={options.picker}
+                    fields={options.fields}
+                    presetColors={presetColors}
+                    allowEmpty={options.allowEmpty}
+                />
             </div>
         );
     }
