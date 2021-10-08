@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import reactCSS from 'reactcss';
 import merge from 'lodash/merge';
 import {ColorWrap, Saturation, Checkboard} from 'react-color/lib/components/common';
+import {IconButton} from '@neos-project/react-ui-components';
+
 import Alpha from './Alpha';
 import Hue from './Hue';
 import Fields from './Fields';
 import PresetColors from './PresetColors';
-import {IconButton} from '@neos-project/react-ui-components';
 
-export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwatchHover, picker, fields, presetColors, renderers, styles: passedStyles = {}, className = ''}) => {
+export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwatchHover, picker, fields, presetColors, allowEmpty, renderers, styles: passedStyles = {}, className = ''}) => {
     const styles = reactCSS(merge({
         'default': {
             picker: {
@@ -144,9 +145,11 @@ export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwa
                             <Checkboard />
                             <div style={ styles.activeColor } />
                         </div>
-                        <div style={ styles.reset }>
-                            <IconButton style="lighter" icon="times" title="Reset" onClick={ onReset }/>
-                        </div>
+                        {allowEmpty && (
+                            <div style={ styles.reset }>
+                                <IconButton style="lighter" icon="times" title="Reset" onClick={ onReset }/>
+                            </div>
+                        )}
                     </div>
                 </div>
             );
