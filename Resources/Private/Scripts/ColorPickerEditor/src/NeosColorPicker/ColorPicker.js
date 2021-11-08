@@ -161,9 +161,11 @@ export const ColorPicker = ({width, rgb, hex, hsv, hsl, onChange, onReset, onSwa
                     <Checkboard />
                     <div style={ styles.activeColor } />
                 </div>
-                <div style={ styles.reset }>
-                    <IconButton style="lighter" icon="times" title="Reset" onClick={ onReset }/>
-                </div>
+                {allowEmpty && (
+                    <div style={ styles.reset }>
+                        <IconButton style="lighter" icon="times" title="Reset" onClick={ onReset }/>
+                    </div>
+                )}
             </div>
         );
     }
