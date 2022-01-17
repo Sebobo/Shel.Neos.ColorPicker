@@ -67,8 +67,6 @@ export default class ColorPickerEditor extends PureComponent {
             presetColors = options.presetColors;
         }
 
-        console.log(this.props, 'colorpicker props');
-
         return (
             <div>
                 <NeosColorPicker

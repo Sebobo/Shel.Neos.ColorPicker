@@ -1,6 +1,6 @@
 import React from 'react';
 import reactCSS from 'reactcss';
-import color from 'react-color/lib/helpers/color';
+import {isValidHex} from 'react-color/lib/helpers/color';
 import {EditableInput} from 'react-color/lib/components/common';
 
 export const Fields = ({onChange, rgb, hsl, hex, disableAlpha}) => {
@@ -51,7 +51,7 @@ export const Fields = ({onChange, rgb, hsl, hex, disableAlpha}) => {
 
     const handleChange = (data, e) => {
         if (data.hex) {
-            if (color.isValidHex(data.hex)) {
+            if (isValidHex(data.hex)) {
                 onChange({
                     hex: data.hex,
                     source: 'hex'
