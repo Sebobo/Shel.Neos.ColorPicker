@@ -16,7 +16,7 @@ export class Alpha extends (PureComponent || Component) {
     }
 
     handleChange = e => {
-        const change = calculateChange(e, null, this.props, this.container);
+        const change = calculateChange(e, this.props.hsl, null, this.props.rgb.a, this.container);
         if (change && typeof this.props.onChange === 'function') {
             this.props.onChange(change, e);
         }
