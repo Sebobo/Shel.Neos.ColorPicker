@@ -1,30 +1,30 @@
 {
-  "name": "shel/neos-colorpicker",
-  "type": "neos-plugin",
-  "description": "A plugin for Neos CMS which provides a colorpicker editor",
-  "license": "GPL-3.0",
-  "keywords": [
-    "neos",
-    "neoscms",
-    "flow",
-    "colorpicker",
-    "editor"
-  ],
-  "authors": [
-    {
-      "name": "Sebastian Helzle",
-      "email": "sebastian@helzle.it",
-      "homepage": "https://www.helzle.it",
-      "role": "Developer"
+    "name": "shel/neos-colorpicker",
+    "type": "neos-plugin",
+    "description": "A plugin for Neos CMS which provides a colorpicker editor",
+    "license": "GPL-3.0",
+    "keywords": [
+        "neos",
+        "neoscms",
+        "flow",
+        "colorpicker",
+        "editor"
+    ],
+    "authors": [
+        {
+            "name": "Sebastian Helzle",
+            "email": "sebastian@helzle.it",
+            "homepage": "https://www.helzle.it",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "neos/neos": "^5.3 || ^7.0 || ^8.0 || dev-master",
+        "neos/neos-ui": "^5.3 || ^7.0 || ^8.0 || dev-master"
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Shel.Neos.ColorPicker"
+        }
     }
-  ],
-  "require": {
-    "neos/neos": "^3.3 || ^4.2 || ^5.0 || ^7.0",
-    "neos/neos-ui": "^2.1 || ^3.1 || >= 4.0"
-  },
-  "extra": {
-    "neos": {
-      "package-key": "Shel.Neos.ColorPicker"
-    }
-  }
 }
