@@ -68,7 +68,7 @@ Add a property of type string and configure the editor as seen in this example:
 ```
 prototype(My.Site:Content.Text) < prototype(Neos.Neos:ContentComponent) {
 
-  textColor = ${q(node).property('textColor') ? q(node).property('textColor') : ''}
+  textColor = ${q(node).property('textColor')}
 
   renderer = afx`
     <div class="container" style={'color:' + props.textColor + ';'}>
