@@ -71,7 +71,7 @@ prototype(My.Site:Content.Text) < prototype(Neos.Neos:ContentComponent) {
   textColor = ${q(node).property('textColor')}
 
   renderer = afx`
-    <div class="container" style={'color:' + props.textColor + ';'}>
+    <div class="container" style={'color:' + props.textColor + ';'} style.@if.hasColor={props.textColor}>
         <h1>Hello World</h1>
         <p>Euismod massa quam arcu et mi arcu tincidunt maximus tortor lacus interdum vivamus cursus aliquam eget amet amet eget gravida et vivamus eget diam tortor.</p>
     </div>
