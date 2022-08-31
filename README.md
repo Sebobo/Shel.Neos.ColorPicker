@@ -33,6 +33,8 @@ Then run `composer update` in your project directory.
 
 Add a property of type string and configure the editor as seen in this example:
 
+### Your NodeType:
+
 ```yaml
 "My.Site:Content.Text":
   superTypes:
@@ -49,17 +51,34 @@ Add a property of type string and configure the editor as seen in this example:
           group: 'text'
           editor: 'Shel.Neos.ColorPicker/ColorPickerEditor'
           editorOptions:
-            # `mode` can be one of "rgba", "hsla", "hex"
+            # `mode` can be one of "rgba", "hsla", "hex", default: rgba
             mode: 'rgba'
-            # Show saturation/hue/alpha (optional), boolean, default: true
+            # Show saturation/hue/alpha (optional), boolean, default: false
             picker: true
-            # Show hex/rgba fields (optional), boolean, default: true
+            # Show hex/rgba fields (optional), boolean, default: false
             fields: true
             # Show preset colors (optional), array of colors or boolean (to disable)
             presetColors: ['#ff0000', '#0000ff', '#ffff00', ...]
             # Hides the reset button if set to false
             allowEmpty: true
 ```              
+
+### Your Fusion:
+
+```
+prototype(My.Site:Content.Text) < prototype(Neos.Neos:ContentComponent) {
+
+  textColor = ${q(node).property('textColor')}
+
+  renderer = afx`
+    <div class="container" style={'color:' + props.textColor + ';'} style.@if.hasColor={props.textColor}>
+        <h1>Hello World</h1>
+        <p>Euismod massa quam arcu et mi arcu tincidunt maximus tortor lacus interdum vivamus cursus aliquam eget amet amet eget gravida et vivamus eget diam tortor.</p>
+    </div>
+  `
+}
+```
+
 ## Customization
 
 The editor allows some customization options via your `Settings.yaml` file:
