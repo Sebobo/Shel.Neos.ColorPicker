@@ -59,6 +59,8 @@ Add a property of type string and configure the editor as seen in this example:
             fields: true
             # Show preset colors (optional), array of colors or boolean (to disable)
             presetColors: ['#ff0000', '#0000ff', '#ffff00', ...]
+            # OR you can show presetColors with alternative titles, that will be shown on hover
+            # presetColors: [{color: '#ff0000', title: 'red'}, {color: '#0000ff', title: 'blue'}, {color: '#ffff00', title: 'yellow'}]
             # Hides the reset button if set to false
             allowEmpty: true
 ```              
