@@ -9,9 +9,10 @@ type FieldsProps = {
     hsl: HSLColor;
     hex: HEXColor;
     onChange: ColorChange;
+    mode: ColorPickerMode;
 };
 
-const Fields: React.FC<FieldsProps> = ({ onChange, rgb, hsl, hex }) => {
+const Fields: React.FC<FieldsProps> = ({ onChange, rgb, hsl, hex, mode }) => {
     const handleChange = useCallback(
         ({ hex, a, r, g, b }) => {
             if (hex) {
@@ -61,15 +62,17 @@ const Fields: React.FC<FieldsProps> = ({ onChange, rgb, hsl, hex }) => {
             <div className={style.single}>
                 <EditableInput label="b" value={rgb.b} onChange={handleChange} dragLabel="true" dragMax="255" />
             </div>
-            <div className={style.alpha}>
-                <EditableInput
-                    label="a"
-                    value={Math.round(rgb.a * 100)}
-                    onChange={handleChange}
-                    dragLabel="true"
-                    dragMax="100"
-                />
-            </div>
+            {mode !== 'hex' && (
+                <div className={style.alpha}>
+                    <EditableInput
+                        label="a"
+                        value={Math.round(rgb.a * 100)}
+                        onChange={handleChange}
+                        dragLabel="true"
+                        dragMax="100"
+                    />
+                </div>
+            )}
         </div>
     );
 };

@@ -1,9 +1,12 @@
 declare module '*.module.css';
 
+type ColorPickerMode = 'hex' | 'rgba' | 'hsla';
+
 type HSLColor = {
     h: number;
     s: number;
     l: number;
+    a: number;
 };
 
 type RGBAColor = {
@@ -14,7 +17,6 @@ type RGBAColor = {
 };
 
 type HEXColor = string;
-
 type HSVColor = string;
 
 type ColorValue = string;

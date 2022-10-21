@@ -10,6 +10,7 @@ import PresetColors from './PresetColors';
 import style from './ColorPicker.module.css';
 
 type ColorPickerProps = {
+    mode: ColorPickerMode;
     color: string;
     onChange: ColorChange;
     onReset: () => void;
@@ -30,6 +31,7 @@ type ColorPickerProps = {
 };
 
 const ColorPicker: React.FC<ColorPickerProps> = ({
+    mode = 'rgba',
     color, // Used by ColorWrap
     rgb, // Provided by ColorWrap
     hex, // Provided by ColorWrap
@@ -58,9 +60,11 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
                             <div className={style.hue}>
                                 <Hue hsl={hsl} onChange={onChange} />
                             </div>
-                            <div className={style.alpha}>
-                                <Alpha rgb={rgb} hsl={hsl} renderers={renderers} onChange={onChange} />
-                            </div>
+                            {mode !== 'hex' && (
+                                <div className={style.alpha}>
+                                    <Alpha rgb={rgb} hsl={hsl} renderers={renderers} onChange={onChange} />
+                                </div>
+                            )}
                         </div>
                         <div className={style.color}>
                             <Checkboard />
@@ -86,7 +90,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
                     )}
                 </div>
             )}
-            {fields && <Fields rgb={rgb} hsl={hsl} hex={hex} onChange={onChange} />}
+            {fields && <Fields rgb={rgb} hsl={hsl} hex={hex} mode={mode} onChange={onChange} />}
             {Array.isArray(presetColors) && (
                 <PresetColors colors={presetColors} onClick={onChange} onSwatchHover={onSwatchHover} />
             )}

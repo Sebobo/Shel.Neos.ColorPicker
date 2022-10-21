@@ -70,6 +70,7 @@ export default function makeColorPickerEditor(defaults: ColorPickerOptions) {
             return (
                 <div className="neos-color-picker">
                     <NeosColorPicker
+                        mode={options.mode}
                         color={value ?? ''}
                         onChange={this.handleChangeColor}
                         onReset={this.handleResetColorClick}
