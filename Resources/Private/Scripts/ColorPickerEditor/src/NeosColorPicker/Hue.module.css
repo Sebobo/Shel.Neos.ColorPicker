@@ -1,0 +1,25 @@
+.hue {
+  position: absolute;
+  inset: 0;
+}
+
+.container {
+  padding: 0 2px;
+  position: relative;
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
+}
+
+.pointer {
+  position: absolute;
+  border-radius: 2px;
+}
+
+.slider {
+  margin-top: -2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transform: translateX(-2px);
+}

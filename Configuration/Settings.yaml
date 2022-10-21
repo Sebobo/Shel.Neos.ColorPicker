@@ -2,6 +2,9 @@ Neos:
   Neos:
     Ui:
       resources:
+        stylesheets:
+          Shel.Neos:ColorPickerEditor:
+            resource: resource://Shel.Neos.ColorPicker/Public/ColorPickerEditor/Plugin.css
         javascript:
           Shel.Neos:ColorPickerEditor:
             resource: resource://Shel.Neos.ColorPicker/Public/ColorPickerEditor/Plugin.js

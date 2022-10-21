@@ -1,23 +1,40 @@
 {
-  "description": "Shel.Neos.ColorPicker:ColorPickerEditor",
-  "license": "proprietary",
-  "private": true,
-  "engines": {
-    "node": ">=14"
-  },
-  "scripts": {
-    "build": "NODE_ENV=production neos-react-scripts build",
-    "watch": "neos-react-scripts watch"
-  },
-  "devDependencies": {
-    "@neos-project/eslint-config-neos": "^2.3.0",
-    "@neos-project/neos-ui-extensibility": "^4.0.12",
-    "@neos-project/react-ui-components": "^4.4.8",
-    "eslint": "^6.8.0",
-    "react-color": "^2.19.3",
-    "webpack": "^4.44.2"
-  },
-  "neos": {
-    "buildTargetDirectory": "../../../Public/ColorPickerEditor"
-  }
+    "description": "Shel.Neos.ColorPicker:ColorPickerEditor",
+    "version": "1.0.0",
+    "license": "proprietary",
+    "private": true,
+    "engines": {
+        "node": ">=16"
+    },
+    "scripts": {
+        "postinstall": "patch-package",
+        "build": "NODE_ENV=production neos-react-scripts build",
+        "watch": "neos-react-scripts watch"
+    },
+    "devDependencies": {
+        "@neos-project/eslint-config-neos": "^2.3.0",
+        "@neos-project/neos-ui-extensibility": "^5.3.18",
+        "@neos-project/react-ui-components": "^5.3.18",
+        "@types/react": "^16.14.32",
+        "@typescript-eslint/eslint-plugin": "^4.11.0",
+        "@typescript-eslint/parser": "^4.11.0",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^7.1.0",
+        "eslint-plugin-prettier": "^3.3.0",
+        "eslint-plugin-react": "^7.21.5",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "patch-package": "^6.4.7",
+        "prettier": "^2.5.1",
+        "react": "^16.14.0",
+        "react-color": "^2.19.3",
+        "webpack": "^4.44.2"
+    },
+    "neos": {
+        "buildTargetDirectory": "../../../Public/ColorPickerEditor"
+    },
+    "browserslist": [
+        "last 2 versions",
+        "not dead",
+        "> 1%"
+    ]
 }
