@@ -11,7 +11,7 @@ Neos:
 
       frontendConfiguration:
         'Shel.Neos:ColorPickerEditor':
-          # `mode` can be one of "rgba", "hsla", "hex"
+          # `mode` can be one of "rgba", "hsla", "hex", "preset"
           mode: 'rgba'
           # Show saturation/hue/alpha
           picker: false

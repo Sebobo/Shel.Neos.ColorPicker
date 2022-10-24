@@ -1,6 +1,6 @@
 declare module '*.module.css';
 
-type ColorPickerMode = 'hex' | 'rgba' | 'hsla';
+type ColorPickerMode = 'hex' | 'rgba' | 'hsla' | 'preset';
 
 type HSLColor = {
     h: number;
@@ -20,6 +20,12 @@ type HEXColor = string;
 type HSVColor = string;
 
 type ColorValue = string;
-type ColorDefinition = { color: ColorValue; title: string };
+type ColorDefinition = {
+    color: ColorValue;
+    title?: string;
+    value?: string;
+};
+
+type PresetList = (ColorValue | ColorDefinition)[];
 
 type ColorChange = (color: HSLColor | RGBAColor | { hex?: string; source: string }) => void;

@@ -1,0 +1,209 @@
+.Alpha-module__alpha___1lSC6 {
+  position: absolute;
+  inset: 0;
+}
+
+.Alpha-module__checkboard___3i-ZN {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.Alpha-module__gradient___TxTgt {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+}
+
+.Alpha-module__container___nDeiz {
+  position: relative;
+  height: 100%;
+  margin: 0 3px;
+}
+
+.Alpha-module__pointer___2vQyZ {
+  position: absolute;
+}
+
+.Alpha-module__slider___3pKvk {
+  width: 4px;
+  border-radius: 2px;
+  height: 19px;
+  box-shadow: none;
+  background: #fff;
+  margin-top: -2px;
+  transform: translateX(-2px);
+}
+
+.Hue-module__hue___9BqSe {
+  position: absolute;
+  inset: 0;
+}
+
+.Hue-module__container___1lL1F {
+  padding: 0 2px;
+  position: relative;
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
+}
+
+.Hue-module__pointer___1y7dy {
+  position: absolute;
+  border-radius: 2px;
+}
+
+.Hue-module__slider___Jukfo {
+  margin-top: -2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transform: translateX(-2px);
+}
+
+.Fields-module__fields___KGo76 {
+  display: flex;
+  padding-top: 4px;
+}
+
+.Fields-module__fields___KGo76 input {
+  width: 100%;
+  padding: 6px;
+  border: none;
+  font-size: 13px;
+  background: #323232;
+  border-radius: 2px;
+  text-align: center;
+  color: #fff;
+}
+
+.Fields-module__fields___KGo76 label {
+  display: block;
+  text-align: center;
+  font-size: 11px;
+  color: #fff;
+  padding-top: 3px;
+  padding-bottom: 4px;
+  text-transform: capitalize;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.Fields-module__single___3TwXb {
+  flex: 1;
+  padding-left: 6px;
+}
+
+.Fields-module__alpha___1UCpS {
+  flex: 1;
+  padding-left: 6px;
+}
+
+.Fields-module__double___21_iN {
+  flex: 2;
+  margin-right: 10px;
+}
+
+.PresetColors-module__colors___3cxDO {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18px, 1fr));
+  grid-gap: 10px;
+  margin-top: 10px;
+  padding-top: 15px;
+  border-top: 1px solid #3f3f3f;
+}
+
+.PresetColors-module__swatchWrap___2sFLz {
+  width: 18px;
+  height: 18px;
+}
+
+.PresetColors-module__swatch___3O-KZ {
+  border: 1px solid #3f3f3f;
+  border-radius: 2px;
+}
+
+:root {
+}
+
+.ColorPicker-module__picker___1pjnh {
+  padding: 0;
+  box-sizing: initial;
+  width: auto;
+  background: transparent;
+  border-radius: 0;
+}
+
+.ColorPicker-module__saturation___2fGnx {
+  position: relative;
+  margin-bottom: 10px;
+  padding-bottom: 75%;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 2px;
+}
+
+.ColorPicker-module__controls___E3Bte {
+  display: flex;
+  padding-bottom: 10px;
+}
+
+.ColorPicker-module__sliders___3gnn9 {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1px 0;
+}
+
+.ColorPicker-module__color___1_nmF {
+  position: relative;
+  overflow: hidden;
+  width: 41px;
+  height: 41px;
+  background: #fff;
+  border: 1px solid #323232;
+  border-radius: 2px;
+}
+
+.ColorPicker-module__colorWide___16MG- {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 41px;
+  background: #fff;
+  border: 1px solid #323232;
+  border-radius: 2px;
+}
+
+.ColorPicker-module__reset___1vFnW {
+  margin-left: 10px;
+}
+
+.ColorPicker-module__hue___1SJB- {
+  position: relative;
+  margin-right: 10px;
+  height: 15px;
+  border-radius: 2px;
+}
+
+.ColorPicker-module__alpha___3_lDy {
+  position: relative;
+  margin-right: 10px;
+  height: 15px;
+  overflow: visible;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.ColorPicker-module__activeColor___11Cgh {
+  position: absolute;
+  inset: 0;
+  box-shadow: none;
+}
+
+
+/*# sourceMappingURL=Plugin.css.map*/

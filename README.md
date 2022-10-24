@@ -51,7 +51,7 @@ Add a property of type string and configure the editor as seen in this example:
           group: 'text'
           editor: 'Shel.Neos.ColorPicker/ColorPickerEditor'
           editorOptions:
-            # `mode` can be one of "rgba", "hsla", "hex", default: rgba
+            # `mode` can be one of "rgba", "hsla", "hex", "preset", default: rgba
             mode: 'rgba'
             # Show saturation/hue/alpha (optional), boolean, default: false
             picker: true
@@ -83,7 +83,7 @@ prototype(My.Site:Content.Text) < prototype(Neos.Neos:ContentComponent) {
 
 ## Customization
 
-The editor allows some customization options via your `Settings.yaml` file:
+The editor allows some global default options via your `Settings.yaml` file:
 
 ```yaml
 Neos:
@@ -91,7 +91,7 @@ Neos:
   Ui:
    frontendConfiguration:
     "Shel.Neos:ColorPickerEditor":
-     # `mode` can be one of "rgba", "hsla", "hex"
+     # `mode` can be one of "rgba", "hsla", "hex", "preset"
      mode: "rgba"
      # Colors which are available for quick selection
      presetColors: ["#D0021B", "#F5A623", ...]
@@ -101,7 +101,21 @@ Neos:
 This can be helpful, when the hsl format is needed to get the individual components.
 
 `presetColors` lets you customize the list of color squares that are available for quick selection.
-  
+
+## Advanced preset usage
+
+The `presetColors` option can have two shapes.
+One is just a simple list of color strings, the other one is a list of objects with a `color` and optional `title` and `value` properties.
+
+* `color` - the color that will be displayed in the preset color squares
+* `title` - (optional) the text that will be displayed on hover
+* `value` - (optional) the value that will be stored in the node property instead of the color value
+
+The `value` can be used to store a value different from the presets color value.
+This value is only used when the `mode` is set to `preset` which in turn will also disable the 
+color picker and the color fields.
+The benefit of this option is that you can show a color value to the user but store a different value in the node property.
+F.e. a CSS classname.
 
 ## Contributions
 

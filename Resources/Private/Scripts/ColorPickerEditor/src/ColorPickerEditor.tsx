@@ -4,18 +4,18 @@ import PropTypes from 'prop-types';
 import NeosColorPicker from './NeosColorPicker/ColorPicker';
 
 type ColorPickerOptions = {
-    presetColors: string[] | boolean;
+    presetColors: PresetList | boolean;
 };
 
 type ColorPickerProps = {
     value: string;
     commit: (value: string) => void;
     options: {
-        mode: 'hex' | 'rgba' | 'hsla';
+        mode: ColorPickerMode;
         picker: boolean;
         fields: boolean;
         allowEmpty: boolean;
-        presetColors: string[] | boolean;
+        presetColors: PresetList | boolean;
     };
 };
 
@@ -35,8 +35,21 @@ export default function makeColorPickerEditor(defaults: ColorPickerOptions) {
 
         handleChangeColor = (newColor) => {
             const { commit, options } = this.props;
+            const presetColors = options.presetColors;
 
             switch (options.mode) {
+                // In the mode "preset", the value to be stored might can be defined in the color definition value
+                case 'preset': {
+                    const matchingPreset = Array.isArray(presetColors)
+                        ? (presetColors.find(
+                              (preset) => typeof preset === 'object' && preset.color === newColor.hex
+                          ) as ColorDefinition)
+                        : null;
+                    if (matchingPreset?.value) {
+                        commit(matchingPreset.value);
+                    }
+                    break;
+                }
                 case 'hsla': {
                     const h = Number(newColor.hsl.h.toFixed(3));
                     const s = Number(newColor.hsl.s.toFixed(3));
@@ -61,21 +74,36 @@ export default function makeColorPickerEditor(defaults: ColorPickerOptions) {
 
         render() {
             const { value, options } = this.props;
+            const presetsOnly = options.mode === 'preset';
+            let currentValue = value;
 
             let presetColors = defaults.presetColors;
             if (Array.isArray(options.presetColors) || options.presetColors === false) {
                 presetColors = options.presetColors;
             }
 
+            // If the current value matches the value of a ColorDefinition in the presetColors, use its color instead
+            if (currentValue && options.mode === 'preset' && Array.isArray(presetColors)) {
+                const selectedColorDefinition = presetColors.find((color) => {
+                    if (color === currentValue) {
+                        return true;
+                    }
+                    return typeof color === 'object' && color.value === currentValue;
+                }) as ColorDefinition;
+                if (selectedColorDefinition?.color) {
+                    currentValue = selectedColorDefinition.color;
+                }
+            }
+
             return (
                 <div className="neos-color-picker">
                     <NeosColorPicker
                         mode={options.mode}
-                        color={value ?? ''}
+                        color={currentValue ?? ''}
                         onChange={this.handleChangeColor}
                         onReset={this.handleResetColorClick}
-                        picker={options.picker}
-                        fields={options.fields}
+                        picker={!presetsOnly && options.picker}
+                        fields={!presetsOnly && options.fields}
                         presetColors={presetColors}
                         allowEmpty={options.allowEmpty}
                     />
