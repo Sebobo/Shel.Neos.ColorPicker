@@ -14,7 +14,7 @@ type FieldsProps = {
 
 const Fields: React.FC<FieldsProps> = ({ onChange, rgb, hsl, hex, mode }) => {
     const handleChange = useCallback(
-        ({ hex, a, r, g, b }) => {
+        ({ hex, a, r, g, b, h, s, l }) => {
             if (hex) {
                 if (isValidHex(hex)) {
                     onChange({
@@ -29,6 +29,14 @@ const Fields: React.FC<FieldsProps> = ({ onChange, rgb, hsl, hex, mode }) => {
                     b: b || rgb.b,
                     a: rgb.a,
                     source: 'rgb',
+                });
+            } else if (h || s || l) {
+                onChange({
+                    h: h || hsl.h,
+                    s: s || hsl.s,
+                    l: l || hsl.l,
+                    a: hsl.a,
+                    source: 'hsla',
                 });
             } else if (a) {
                 if (a < 0) {
@@ -53,15 +61,49 @@ const Fields: React.FC<FieldsProps> = ({ onChange, rgb, hsl, hex, mode }) => {
             <div className={style.double}>
                 <EditableInput label="hex" value={hex.replace('#', '')} onChange={handleChange} />
             </div>
-            <div className={style.single}>
-                <EditableInput label="r" value={rgb.r} onChange={handleChange} dragLabel="true" dragMax="255" />
-            </div>
-            <div className={style.single}>
-                <EditableInput label="g" value={rgb.g} onChange={handleChange} dragLabel="true" dragMax="255" />
-            </div>
-            <div className={style.single}>
-                <EditableInput label="b" value={rgb.b} onChange={handleChange} dragLabel="true" dragMax="255" />
-            </div>
+            {mode === 'hsla' ? (
+                <React.Fragment>
+                    <div className={style.single}>
+                        <EditableInput
+                            label="h"
+                            value={Math.round(hsl.h)}
+                            onChange={handleChange}
+                            dragLabel="true"
+                            dragMax="255"
+                        />
+                    </div>
+                    <div className={style.single}>
+                        <EditableInput
+                            label="s"
+                            value={Math.round(hsl.s * 100)}
+                            onChange={handleChange}
+                            dragLabel="true"
+                            dragMax="100"
+                        />
+                    </div>
+                    <div className={style.single}>
+                        <EditableInput
+                            label="l"
+                            value={Math.round(hsl.l * 100)}
+                            onChange={handleChange}
+                            dragLabel="true"
+                            dragMax="100"
+                        />
+                    </div>
+                </React.Fragment>
+            ) : (
+                <React.Fragment>
+                    <div className={style.single}>
+                        <EditableInput label="r" value={rgb.r} onChange={handleChange} dragLabel="true" dragMax="255" />
+                    </div>
+                    <div className={style.single}>
+                        <EditableInput label="g" value={rgb.g} onChange={handleChange} dragLabel="true" dragMax="255" />
+                    </div>
+                    <div className={style.single}>
+                        <EditableInput label="b" value={rgb.b} onChange={handleChange} dragLabel="true" dragMax="255" />
+                    </div>
+                </React.Fragment>
+            )}
             {mode !== 'hex' && (
                 <div className={style.alpha}>
                     <EditableInput
