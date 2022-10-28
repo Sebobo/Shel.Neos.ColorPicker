@@ -105,12 +105,12 @@ export default function makeColorPickerEditor(defaults: ColorPickerOptions) {
             }
             this.presetColors = presetColors;
 
-            console.debug('Presets', presetColors);
-
             // If the current value matches the value of a ColorDefinition in the presetColors, use its color instead
             if (currentValue && options.mode === 'preset' && presetColors.length > 0) {
                 const selectedColorDefinition = presetColors.find((color) => color.value === currentValue);
-                currentValue = selectedColorDefinition.color;
+                if (selectedColorDefinition) {
+                    currentValue = selectedColorDefinition.color;
+                }
             }
 
             return (
