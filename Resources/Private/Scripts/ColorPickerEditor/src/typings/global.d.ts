@@ -26,6 +26,6 @@ type ColorDefinition = {
     value?: string;
 };
 
-type PresetList = (ColorValue | ColorDefinition)[];
+type PresetList = ColorDefinition[];
 
 type ColorChange = (color: HSLColor | RGBAColor | { hex?: string; source: string }) => void;

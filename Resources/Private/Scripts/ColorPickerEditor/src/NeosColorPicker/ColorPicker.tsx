@@ -17,7 +17,7 @@ type ColorPickerProps = {
     width: string | number;
     picker: boolean;
     fields: boolean;
-    presetColors: string[] | boolean;
+    presetColors: PresetList;
     allowEmpty: boolean;
     // Props from ColorWrap
     rgb?: RGBAColor;
@@ -91,7 +91,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
                 </div>
             )}
             {fields && <Fields rgb={rgb} hsl={hsl} hex={hex} mode={mode} onChange={onChange} />}
-            {Array.isArray(presetColors) && (
+            {presetColors.length > 0 && (
                 <PresetColors colors={presetColors} onClick={onChange} onSwatchHover={onSwatchHover} />
             )}
         </div>

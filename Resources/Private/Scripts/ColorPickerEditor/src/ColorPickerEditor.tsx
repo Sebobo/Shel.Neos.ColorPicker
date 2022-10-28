@@ -33,20 +33,17 @@ export default function makeColorPickerEditor(defaults: ColorPickerOptions) {
             }),
         };
 
+        private presetColors: ColorDefinition[];
+
         handleChangeColor = (newColor) => {
             const { commit, options } = this.props;
-            const presetColors = options.presetColors;
-
+            
             switch (options.mode) {
                 // In the mode "preset", the value to be stored might can be defined in the color definition value
                 case 'preset': {
-                    const matchingPreset = Array.isArray(presetColors)
-                        ? (presetColors.find((preset) =>
-                              typeof preset === 'object' ? preset.color === newColor.hex : preset === newColor.hex
-                          ) as ColorDefinition)
-                        : null;
+                    const matchingPreset = this.presetColors.find((preset) => preset.color === newColor.hex);
                     if (matchingPreset) {
-                        commit(typeof matchingPreset === 'object' ? matchingPreset.value : matchingPreset);
+                        commit(matchingPreset.value);
                     }
                     break;
                 }
@@ -82,18 +79,38 @@ export default function makeColorPickerEditor(defaults: ColorPickerOptions) {
                 presetColors = options.presetColors;
             }
 
+            if (Array.isArray(presetColors)) {
+                presetColors = presetColors
+                    .map((preset: string | ColorDefinition) => {
+                        if (typeof preset === 'string') {
+                            return {
+                                color: preset,
+                                title: preset,
+                                value: preset,
+                            };
+                        }
+                        if (!preset.color) {
+                            console.error('Invalid preset color definition for ColorPicker', preset);
+                            return null;
+                        }
+                        return {
+                            color: preset.color,
+                            title: preset.title || preset.color,
+                            value: preset.value || preset.color,
+                        };
+                    })
+                    .filter((preset) => preset !== null);
+            } else {
+                presetColors = [];
+            }
+            this.presetColors = presetColors;
+
+            console.debug('Presets', presetColors);
+
             // If the current value matches the value of a ColorDefinition in the presetColors, use its color instead
-            if (currentValue && options.mode === 'preset' && Array.isArray(presetColors)) {
-                const selectedColorDefinition = presetColors.find((color) => {
-                    if (color === currentValue) {
-                        return true;
-                    }
-                    return typeof color === 'object' && color.value === currentValue;
-                }) as ColorDefinition;
-                currentValue =
-                    typeof selectedColorDefinition === 'object'
-                        ? selectedColorDefinition.color
-                        : selectedColorDefinition;
+            if (currentValue && options.mode === 'preset' && presetColors.length > 0) {
+                const selectedColorDefinition = presetColors.find((color) => color.value === currentValue);
+                currentValue = selectedColorDefinition.color;
             }
 
             return (

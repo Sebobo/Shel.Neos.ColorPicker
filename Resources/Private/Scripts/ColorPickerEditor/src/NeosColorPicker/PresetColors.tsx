@@ -4,7 +4,7 @@ import { Swatch } from 'react-color/lib/components/common';
 import style from './PresetColors.module.css';
 
 type PresetColorsProps = {
-    colors: (ColorValue | ColorDefinition)[];
+    colors: PresetList;
     onClick: ColorChange;
     onSwatchHover: (color: string) => void;
 };
@@ -26,20 +26,18 @@ const PresetColors: React.FC<PresetColorsProps> = ({ colors, onClick, onSwatchHo
 
     return (
         <div className={style.colors}>
-            {colors.map((colorObjOrString) => {
-                const c =
-                    typeof colorObjOrString === 'string' ? { color: colorObjOrString, title: '' } : colorObjOrString;
-                const key = `${c.color}${c.title || ''}`;
+            {colors.map((preset) => {
+                const key = `${preset.color}${preset.title || ''}`;
 
                 return (
                     <div key={key} className={style.swatchWrap}>
                         <Swatch
-                            {...c}
+                            {...preset}
                             className={style.swatch}
                             onClick={handleClick}
                             onHover={onSwatchHover}
                             focusStyle={{
-                                boxShadow: `inset 0 0 0 1px rgba(0,0,0,.15), 0 0 4px ${c.color}`,
+                                boxShadow: `inset 0 0 0 1px rgba(0,0,0,.15), 0 0 4px ${preset.color}`,
                             }}
                         />
                     </div>
