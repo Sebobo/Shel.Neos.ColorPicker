@@ -105,9 +105,9 @@ This can be helpful, when the hsl format is needed to get the individual compone
 ## Advanced preset usage
 
 The `presetColors` option can have two shapes.
-One is just a simple list of color strings, the other one is a list of objects with a `color` and optional `title` and `value` properties.
+One is just a simple list of color strings, the other one is a list of objects with a `color` (hex) and optional `title` and `value` properties.
 
-* `color` - the color that will be displayed in the preset color squares
+* `color` - the color (hex) that will be displayed in the preset color squares
 * `title` - (optional) the text that will be displayed on hover
 * `value` - (optional) the value that will be stored in the node property instead of the color value
 
