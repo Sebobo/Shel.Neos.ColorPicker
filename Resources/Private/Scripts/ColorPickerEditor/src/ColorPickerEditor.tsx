@@ -41,12 +41,12 @@ export default function makeColorPickerEditor(defaults: ColorPickerOptions) {
                 // In the mode "preset", the value to be stored might can be defined in the color definition value
                 case 'preset': {
                     const matchingPreset = Array.isArray(presetColors)
-                        ? (presetColors.find(
-                              (preset) => typeof preset === 'object' && preset.color === newColor.hex
+                        ? (presetColors.find((preset) =>
+                              typeof preset === 'object' ? preset.color === newColor.hex : preset === newColor.hex
                           ) as ColorDefinition)
                         : null;
-                    if (matchingPreset?.value) {
-                        commit(matchingPreset.value);
+                    if (matchingPreset) {
+                        commit(typeof matchingPreset === 'object' ? matchingPreset.value : matchingPreset);
                     }
                     break;
                 }
@@ -90,9 +90,10 @@ export default function makeColorPickerEditor(defaults: ColorPickerOptions) {
                     }
                     return typeof color === 'object' && color.value === currentValue;
                 }) as ColorDefinition;
-                if (selectedColorDefinition?.color) {
-                    currentValue = selectedColorDefinition.color;
-                }
+                currentValue =
+                    typeof selectedColorDefinition === 'object'
+                        ? selectedColorDefinition.color
+                        : selectedColorDefinition;
             }
 
             return (
