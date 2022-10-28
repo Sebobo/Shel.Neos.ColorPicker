@@ -18,7 +18,8 @@
 
 .slider {
   margin-top: -2px;
-  height: 2px;
+  width: 4px;
+  height: 19px;
   background: #fff;
   border-radius: 2px;
   transform: translateX(-2px);

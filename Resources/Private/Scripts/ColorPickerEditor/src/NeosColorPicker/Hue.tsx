@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { calculateChange } from 'react-color/lib/helpers/hue';
 
 import style from './Hue.module.css';
@@ -10,6 +10,7 @@ type HueProps = {
 
 const Hue: React.FC<HueProps> = ({ hsl, onChange }) => {
     const container = useRef(null);
+    const [isDragging, setIsDragging] = useState(false);
 
     const handleChange = useCallback(
         (e) => {
@@ -21,27 +22,32 @@ const Hue: React.FC<HueProps> = ({ hsl, onChange }) => {
         [hsl, container]
     );
 
-    const unbindEventListeners = useCallback(() => {
-        window.removeEventListener('mousemove', handleChange);
-        window.removeEventListener('mouseup', handleMouseUp);
-    }, [handleChange]);
-
     const handleMouseDown = useCallback(
         (e) => {
             handleChange(e);
-            window.addEventListener('mousemove', handleChange);
-            window.addEventListener('mouseup', handleMouseUp);
+            setIsDragging(true);
         },
         [handleChange]
     );
 
     const handleMouseUp = useCallback(() => {
-        unbindEventListeners();
+        setIsDragging(false);
     }, []);
 
     useEffect(() => {
-        return unbindEventListeners;
-    }, [unbindEventListeners]);
+        if (isDragging) {
+            window.addEventListener('mousemove', handleChange);
+            window.addEventListener('mouseup', handleMouseUp);
+        } else {
+            window.removeEventListener('mousemove', handleChange);
+            window.removeEventListener('mouseup', handleMouseUp);
+        }
+
+        return () => {
+            window.removeEventListener('mousemove', handleChange);
+            window.removeEventListener('mouseup', handleMouseUp);
+        };
+    }, [isDragging]);
 
     return (
         <div className={style.hue}>
