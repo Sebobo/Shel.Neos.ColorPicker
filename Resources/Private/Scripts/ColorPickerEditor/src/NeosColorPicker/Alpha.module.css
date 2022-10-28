@@ -23,14 +23,15 @@
 
 .pointer {
   position: absolute;
+  top: -2px;
+  bottom: -2px;
 }
 
 .slider {
   width: 4px;
   border-radius: 2px;
-  height: 19px;
+  height: 100%;
   box-shadow: none;
   background: #fff;
-  margin-top: -2px;
   transform: translateX(-2px);
 }

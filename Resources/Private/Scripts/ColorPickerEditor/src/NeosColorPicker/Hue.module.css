@@ -14,12 +14,13 @@
 .pointer {
   position: absolute;
   border-radius: 2px;
+  top: -2px;
+  bottom: -2px;
 }
 
 .slider {
-  margin-top: -2px;
   width: 4px;
-  height: 19px;
+  height: 100%;
   background: #fff;
   border-radius: 2px;
   transform: translateX(-2px);
