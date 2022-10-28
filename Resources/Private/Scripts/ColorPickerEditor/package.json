@@ -1,7 +1,7 @@
 {
     "description": "Shel.Neos.ColorPicker:ColorPickerEditor",
     "version": "1.0.0",
-    "license": "proprietary",
+    "license": "GPLv3",
     "private": true,
     "engines": {
         "node": ">=16"
