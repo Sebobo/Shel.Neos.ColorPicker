@@ -1,0 +1,19 @@
+.colors {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18px, 1fr));
+  grid-gap: 10px;
+  margin-top: 10px;
+  padding-top: 15px;
+  border-top: 1px solid #3f3f3f;
+}
+
+.swatchWrap {
+  width: 18px;
+  height: 18px;
+}
+
+.swatch {
+  border: 1px solid #3f3f3f;
+  border-radius: 2px;
+}

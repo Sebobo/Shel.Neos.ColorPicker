@@ -1,0 +1,37 @@
+.alpha {
+  position: absolute;
+  inset: 0;
+}
+
+.checkboard {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.gradient {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+}
+
+.container {
+  position: relative;
+  height: 100%;
+  margin: 0 3px;
+}
+
+.pointer {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+}
+
+.slider {
+  width: 4px;
+  border-radius: 2px;
+  height: 100%;
+  box-shadow: none;
+  background: #fff;
+  transform: translateX(-2px);
+}

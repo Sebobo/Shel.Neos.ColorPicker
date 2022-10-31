@@ -1,0 +1,41 @@
+.fields {
+  display: flex;
+  padding-top: 4px;
+}
+
+.fields input {
+  width: 100%;
+  padding: 6px;
+  border: none;
+  font-size: 13px;
+  background: #323232;
+  border-radius: 2px;
+  text-align: center;
+  color: #fff;
+}
+
+.fields label {
+  display: block;
+  text-align: center;
+  font-size: 11px;
+  color: #fff;
+  padding-top: 3px;
+  padding-bottom: 4px;
+  text-transform: capitalize;
+  user-select: none;
+}
+
+.single {
+  flex: 1;
+  padding-left: 6px;
+}
+
+.alpha {
+  flex: 1;
+  padding-left: 6px;
+}
+
+.double {
+  flex: 2;
+  margin-right: 10px;
+}
