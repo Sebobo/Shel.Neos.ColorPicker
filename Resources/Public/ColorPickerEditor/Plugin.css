@@ -23,15 +23,16 @@
 
 .Alpha-module__pointer___2vQyZ {
   position: absolute;
+  top: -2px;
+  bottom: -2px;
 }
 
 .Alpha-module__slider___3pKvk {
   width: 4px;
   border-radius: 2px;
-  height: 19px;
+  height: 100%;
   box-shadow: none;
   background: #fff;
-  margin-top: -2px;
   transform: translateX(-2px);
 }
 
@@ -51,11 +52,13 @@
 .Hue-module__pointer___1y7dy {
   position: absolute;
   border-radius: 2px;
+  top: -2px;
+  bottom: -2px;
 }
 
 .Hue-module__slider___Jukfo {
-  margin-top: -2px;
-  height: 2px;
+  width: 4px;
+  height: 100%;
   background: #fff;
   border-radius: 2px;
   transform: translateX(-2px);
@@ -126,9 +129,6 @@
   border-radius: 2px;
 }
 
-:root {
-}
-
 .ColorPicker-module__picker___1pjnh {
   padding: 0;
   box-sizing: initial;
@@ -157,6 +157,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 1px 0;
+  gap: 10px;
 }
 
 .ColorPicker-module__color___1_nmF {
@@ -186,14 +187,14 @@
 .ColorPicker-module__hue___1SJB- {
   position: relative;
   margin-right: 10px;
-  height: 15px;
+  flex: 1 1 15px;
   border-radius: 2px;
 }
 
 .ColorPicker-module__alpha___3_lDy {
   position: relative;
   margin-right: 10px;
-  height: 15px;
+  flex: 1 1 15px;
   overflow: visible;
   border-radius: 2px;
   background: #fff;
