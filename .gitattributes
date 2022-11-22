@@ -1,0 +1,6 @@
+*.map binary
+Plugin.js binary
+Plugin.css binary
+
+/.github export-ignore
+/Resources/Private/Scripts/ColorPickerEditor export-ignore

@@ -3,24 +3,18 @@ import PropTypes from 'prop-types';
 
 import NeosColorPicker from './NeosColorPicker/ColorPicker';
 
-type ColorPickerOptions = {
-    presetColors: PresetList | boolean;
-};
-
 type ColorPickerProps = {
     value: string;
     commit: (value: string) => void;
-    options: {
-        mode: ColorPickerMode;
-        picker: boolean;
-        fields: boolean;
-        allowEmpty: boolean;
-        presetColors: PresetList | boolean;
-    };
+    options: ColorPickerOptions | undefined;
+};
+
+type ColorPickerState = ColorPickerOptions & {
+    presetColors: PresetList;
 };
 
 export default function makeColorPickerEditor(defaults: ColorPickerOptions) {
-    return class ColorPickerEditor extends PureComponent<ColorPickerProps> {
+    return class ColorPickerEditor extends PureComponent<ColorPickerProps, ColorPickerState> {
         static propTypes = {
             value: PropTypes.string,
             commit: PropTypes.func.isRequired,
@@ -35,9 +29,50 @@ export default function makeColorPickerEditor(defaults: ColorPickerOptions) {
 
         private presetColors: ColorDefinition[];
 
+        constructor(props) {
+            super(props);
+            const options = props.options || {};
+
+            let presetColors = defaults.presetColors;
+            if (Array.isArray(options.presetColors) || options.presetColors === false) {
+                presetColors = options.presetColors;
+            }
+
+            if (Array.isArray(presetColors)) {
+                presetColors = presetColors
+                    .map((preset: string | ColorDefinition) => {
+                        if (typeof preset === 'string') {
+                            return {
+                                color: preset,
+                                title: preset,
+                                value: preset,
+                            };
+                        }
+                        if (!preset.color) {
+                            console.error('Invalid preset color definition for ColorPicker', preset);
+                            return null;
+                        }
+                        return {
+                            color: preset.color,
+                            title: preset.title || preset.color,
+                            value: preset.value || preset.color,
+                        };
+                    })
+                    .filter((preset) => preset !== null);
+            } else {
+                presetColors = [];
+            }
+
+            this.state = {
+                ...(defaults || {}),
+                presetColors,
+                ...options,
+            };
+        }
+
         handleChangeColor = (newColor) => {
             const { commit, options } = this.props;
-            
+
             switch (options.mode) {
                 // In the mode "preset", the value to be stored might can be defined in the color definition value
                 case 'preset': {
@@ -70,43 +105,13 @@ export default function makeColorPickerEditor(defaults: ColorPickerOptions) {
         };
 
         render() {
-            const { value, options } = this.props;
-            const presetsOnly = options.mode === 'preset';
+            const { value } = this.props;
+            const { mode, presetColors, picker, fields, allowEmpty } = this.state;
+            const presetsOnly = mode === 'preset';
             let currentValue = value;
 
-            let presetColors = defaults.presetColors;
-            if (Array.isArray(options.presetColors) || options.presetColors === false) {
-                presetColors = options.presetColors;
-            }
-
-            if (Array.isArray(presetColors)) {
-                presetColors = presetColors
-                    .map((preset: string | ColorDefinition) => {
-                        if (typeof preset === 'string') {
-                            return {
-                                color: preset,
-                                title: preset,
-                                value: preset,
-                            };
-                        }
-                        if (!preset.color) {
-                            console.error('Invalid preset color definition for ColorPicker', preset);
-                            return null;
-                        }
-                        return {
-                            color: preset.color,
-                            title: preset.title || preset.color,
-                            value: preset.value || preset.color,
-                        };
-                    })
-                    .filter((preset) => preset !== null);
-            } else {
-                presetColors = [];
-            }
-            this.presetColors = presetColors;
-
             // If the current value matches the value of a ColorDefinition in the presetColors, use its color instead
-            if (currentValue && options.mode === 'preset' && presetColors.length > 0) {
+            if (currentValue && mode === 'preset' && presetColors.length > 0) {
                 const selectedColorDefinition = presetColors.find((color) => color.value === currentValue);
                 if (selectedColorDefinition) {
                     currentValue = selectedColorDefinition.color;
@@ -116,14 +121,14 @@ export default function makeColorPickerEditor(defaults: ColorPickerOptions) {
             return (
                 <div className="neos-color-picker">
                     <NeosColorPicker
-                        mode={options.mode}
+                        mode={mode}
                         color={currentValue ?? ''}
                         onChange={this.handleChangeColor}
                         onReset={this.handleResetColorClick}
-                        picker={!presetsOnly && options.picker}
-                        fields={!presetsOnly && options.fields}
+                        picker={!presetsOnly && picker}
+                        fields={!presetsOnly && fields}
                         presetColors={presetColors}
-                        allowEmpty={options.allowEmpty}
+                        allowEmpty={allowEmpty}
                     />
                 </div>
             );

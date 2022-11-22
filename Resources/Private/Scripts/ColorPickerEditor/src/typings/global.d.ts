@@ -2,6 +2,14 @@ declare module '*.module.css';
 
 type ColorPickerMode = 'hex' | 'rgba' | 'hsla' | 'preset';
 
+type ColorPickerOptions = {
+    mode: ColorPickerMode;
+    picker: boolean;
+    fields: boolean;
+    allowEmpty: boolean;
+    presetColors: PresetList | boolean;
+};
+
 type HSLColor = {
     h: number;
     s: number;
