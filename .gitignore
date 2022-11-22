@@ -1,1 +1,10 @@
 node_modules
+.pnp.*
+# TODO: Move yarn and package.json to root
+Resources/Private/Scripts/ColorPickerEditor/.yarn/*
+#!Resources/Private/Scripts/ColorPickerEditor/.yarn/cache
+!Resources/Private/Scripts/ColorPickerEditor/.yarn/patches
+!Resources/Private/Scripts/ColorPickerEditor/.yarn/plugins
+!Resources/Private/Scripts/ColorPickerEditor/.yarn/releases
+!Resources/Private/Scripts/ColorPickerEditor/.yarn/sdks
+!Resources/Private/Scripts/ColorPickerEditor/.yarn/versions
