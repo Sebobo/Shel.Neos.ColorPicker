@@ -72,11 +72,12 @@ export default function makeColorPickerEditor(defaults: ColorPickerOptions) {
 
         handleChangeColor = (newColor) => {
             const { commit, options } = this.props;
+            const { presetColors } = this.state;
 
             switch (options.mode) {
                 // In the mode "preset", the value to be stored might can be defined in the color definition value
                 case 'preset': {
-                    const matchingPreset = this.presetColors.find((preset) => preset.color === newColor.hex);
+                    const matchingPreset = presetColors.find((preset) => preset.color === newColor.hex);
                     if (matchingPreset) {
                         commit(matchingPreset.value);
                     }
