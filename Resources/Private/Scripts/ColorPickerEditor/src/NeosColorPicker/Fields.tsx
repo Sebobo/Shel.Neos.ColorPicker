@@ -24,17 +24,17 @@ const Fields: React.FC<FieldsProps> = ({ onChange, rgb, hsl, hex, mode }) => {
                 }
             } else if (r || g || b) {
                 onChange({
-                    r: r || rgb.r,
-                    g: g || rgb.g,
-                    b: b || rgb.b,
+                    r: r !== undefined ? r : rgb.r,
+                    g: g !== undefined ? g : rgb.g,
+                    b: b !== undefined ? b : rgb.b,
                     a: rgb.a,
                     source: 'rgb',
                 });
             } else if (h || s || l) {
                 onChange({
-                    h: h || hsl.h,
-                    s: s || hsl.s,
-                    l: l || hsl.l,
+                    h: h !== undefined ? h : hsl.h,
+                    s: s !== undefined ? s : hsl.s,
+                    l: l !== undefined ? l : hsl.l,
                     a: hsl.a,
                     source: 'hsla',
                 });
@@ -53,7 +53,7 @@ const Fields: React.FC<FieldsProps> = ({ onChange, rgb, hsl, hex, mode }) => {
                 });
             }
         },
-        [onChange]
+        [onChange, rgb, hsl]
     );
 
     return (

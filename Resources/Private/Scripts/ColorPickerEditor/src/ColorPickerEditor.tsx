@@ -27,8 +27,6 @@ export default function makeColorPickerEditor(defaults: ColorPickerOptions) {
             }),
         };
 
-        private presetColors: ColorDefinition[];
-
         constructor(props) {
             super(props);
             const options = props.options || {};
