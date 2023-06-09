@@ -63,8 +63,8 @@ export default function makeColorPickerEditor(defaults: ColorPickerOptions) {
 
             this.state = {
                 ...(defaults || {}),
-                presetColors,
                 ...options,
+                presetColors,
             };
         }
 
