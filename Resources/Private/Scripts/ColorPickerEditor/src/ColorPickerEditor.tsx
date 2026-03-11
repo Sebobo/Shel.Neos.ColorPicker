@@ -41,7 +41,7 @@ export default function makeColorPickerEditor(defaults: ColorPickerOptions) {
                     .map((preset: string | ColorDefinition) => {
                         if (typeof preset === 'string') {
                             return {
-                                color: preset,
+                                color: preset.toLowerCase(),
                                 title: preset,
                                 value: preset,
                             };
@@ -50,10 +50,11 @@ export default function makeColorPickerEditor(defaults: ColorPickerOptions) {
                             console.error('Invalid preset color definition for ColorPicker', preset);
                             return null;
                         }
+                        const color = preset.color.toLowerCase();
                         return {
-                            color: preset.color,
-                            title: preset.title || preset.color,
-                            value: preset.value || preset.color,
+                            color: color,
+                            title: preset.title || color,
+                            value: preset.value || color,
                         };
                     })
                     .filter((preset) => preset !== null);
