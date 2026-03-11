@@ -46,7 +46,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
     allowEmpty,
     renderers,
 }) => {
-    const activeColor = `rgba(${rgb.r},${rgb.g},${rgb.b},${rgb.a})`;
+    const activeColor = color ? `rgba(${rgb.r},${rgb.g},${rgb.b},${rgb.a})` : 'transparent';
 
     return (
         <div className={style.picker}>
@@ -98,4 +98,4 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
     );
 };
 
-export default ColorWrap(ColorPicker);
+export default React.memo(ColorWrap(ColorPicker));
